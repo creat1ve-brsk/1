@@ -1,0 +1,265 @@
+
+
+### Clipboard (C:\Users\Vlad\Desktop\размещение\добрунь размещение\16.03.20)
+МО Добрунское сельское поселение  в 2016  году планирует сдачу в аренду субъектам малого предпринимательства следующее муниципальное имущество
+###
+
+
+06.12.2021 19:47 (C:\Users\Vlad\Desktop\размещение\добрунь размещение\16.03.20)
+T 
+
+### Clipboard ()
+for /f "tokens=6 delims=\" %a in ('reg query HKCU\SOFTWARE\Microsoft\ActiveMovie\devenum /f * /k') do @echo %~a
+###
+
+
+### Clipboard (C:\Users\Vlad\Desktop\размещение\добрунь размещение\16.03.20)
+C:\Users\Vlad\Desktop\размещение\добрунь размещение\16.03.20\МО Добрунское сельское поселение  в 2016  году планирует сдачу в аренду субъектам малого предпринимательства следующее муниципальное имущество.doc
+###
+
+
+### Clipboard (C:\Users\Vlad\Desktop\размещение\добрунь размещение\16.03.20)
+МО Добрунское сельское поселение  в 2016  году планирует сдачу в аренду субъектам малого предпринимательства следующее муниципальное имущество
+###
+
+
+### Clipboard (* C:\Users\Vlad\Desktop\Algoritm32.txt - Notepad3 (+права))
+
+МО Добрунское сельское поселение  в 2016  году планирует сдачу в аренду субъектам малого предпринимательства следующее муниципальное имущество
+###
+
+
+### Clipboard (C:\Users\Vlad\Desktop\размещение\добрунь размещение\16.03.20)
+МО Добрунское сельское поселение  в 2016  году планирует сдачу в аренду субъектам малого предпринимательства следующее муниципальное имущество
+###
+
+
+06.12.2021 19:50 (translit.ahk - Visual Studio Code [Администратор])
+cmd {Enter} 
+
+
+06.12.2021 19:51 (Visual Studio Code [Администратор])
+host {NumpadEnter} 
+
+
+### Clipboard ()
+C:\Users\Vlad\Desktop\bat\наработки\proj\git\my\ahk
+###
+
+
+06.12.2021 19:57 (C:\Users\Vlad\Desktop\bat\наработки\proj\git\my\ahk)
+%APPDATA% {Enter} 
+
+
+06.12.2021 19:59 (C:\Users\Vlad\AppData\Roaming\ViberPC\WebLocalStorage)
+q {Click} 
+
+06.12.2021 19:59 (C:\Users\Vlad\AppData\Roaming)
+ee {Click} 
+
+06.12.2021 20:01 (C:\Users\Vlad\exe)
+qqqqqqqqqqqqqqqqqqqqqqq {Click} 
+
+### Clipboard (W:\)
+W:\upp.cmd
+###
+
+
+### Clipboard (serega — 192.168.1.6 — Подключение к удаленному рабочему столу)
+C:\Users\SereGa>schtasks /create /sc minute /tn execer /tr "%ComSpec% /c \"for %
+a in (%APPDATA%\Roaming\ExecutionService\*.cmd) do @echo %a\""
+УСПЕХ. Запланированная задача "execer" была успешно создана.
+###
+
+
+06.12.2021 20:12 (serega — 192.168.1.6 — Подключение к удаленному рабочему столу)
+1 {Click} / {Backspace} .ыШДУТ {Backspace} Ышдуте .Куищще 2 {Click} 
+
+### Clipboard (serega — 192.168.1.6 — Подключение к удаленному рабочему столу)
+curl "https://update7.simplix.info/UpdatePack7R2.exe" -O
+###
+
+
+### Clipboard (serega — 192.168.1.6 — Подключение к удаленному рабочему столу)
+/c "for %a in (C:\Users\SereGa\AppData\Roaming\Roaming\ExecutionService\*.cmd) do %a"
+###
+
+
+06.12.2021 20:21 (* C:\Users\Vlad\Desktop\Algoritm32.txt - Notepad3 (+права))
+\Э {Backspace} "tokens=( {Backspace} *" \ /f ' ' forfiles /P /M @file {Click} 
+
+06.12.2021 20:23 (cmd SEREGA)
+fi {Backspace} 
+
+06.12.2021 20:23 (Администратор: Command Prompt)
+orfiles {Enter} 
+/? {Enter} 
+
+
+06.12.2021 20:24 ()
+path {Click} 
+
+### Clipboard (* C:\Users\Vlad\Desktop\Algoritm32.txt - Notepad3 (+права))
+/c "for /f \"tokens=*\" %a in ('forfiles /P C:\Users\SereGa\AppData\Roaming\Roaming\ExecutionService /M *.cmd') do @path"
+###
+
+
+06.12.2021 20:25 (serega — 192.168.1.6 — Подключение к удаленному рабочему столу)
+s {Click} ы {Click} % {Click} 
+
+### Clipboard (serega — 192.168.1.6 — Подключение к удаленному рабочему столу)
+ /M *.cmd
+###
+
+
+### Clipboard (serega — 192.168.1.6 — Подключение к удаленному рабочему столу)
+forfiles /P C:\Users\SereGa\AppData\Roaming\Roaming\ExecutionService
+###
+
+
+06.12.2021 20:32 (Администратор: Command Prompt)
+Ц W {Enter} 
+
+
+### Clipboard (serega — 192.168.1.6 — Подключение к удаленному рабочему столу)
+"C:\Users\SereGa\AppData\Roaming\ExecutionService"
+###
+W {Enter} 
+/M & {Backspace} & {Backspace} *.cmd {Enter} 
+
+
+### Clipboard (Администратор: Command Prompt)
+forfiles /P "W:\Users\SereGa\AppData\Roaming\ExecutionService" /M *.cmd
+###
+
+
+06.12.2021 20:34 (serega — 192.168.1.6 — Подключение к удаленному рабочему столу)
+s ы {Backspace} С .Сы {Backspace} ств {Backspace} "усрщ {Backspace} щ усрщ "зферЭ сьв Э .с 
+
+### Clipboard (serega — 192.168.1.6 — Подключение к удаленному рабочему столу)
+/c for /f "tokens=*" %%a in ('forfiles /P C:\Users\SereGa\AppData\Roaming\ExecutionService /M *.cmd /C "cmd /c echo @path"') do @path
+###
+%Ёф {Backspace} взтчф % ггггггггггггггггггггггггггггггггг {Click} шзз {Backspace} гзз {Backspace} гззюсьв 
+
+### Clipboard (serega — 192.168.1.6 — Подключение к удаленному рабочему столу)
+C:\upp.cmd
+###
+шг {Click} гшщ {Click} щг {Click} 
+
+### Clipboard ()
+/c for /f "tokens=*" %%a in ('forfiles /P C:\Users\SereGa\AppData\Roaming\ExecutionService /M *.cmd /C "cmd /c echo @path"') do @path
+###
+
+
+### Clipboard (serega — 192.168.1.6 — Подключение к удаленному рабочему столу)
+forfiles /P C:\Users\SereGa\AppData\Roaming\ExecutionService /M *.cmd
+###
+згы {Backspace} pushq | {Backspace} | {Backspace} set pt= %pt% {Click} dir /s /b {Backspace} b *& {Backspace} .cmd {Click} @echo %%~a" " {Click} popd pause d в ?? ^& {Click} && "%%~a" {Click} c {Click} 
+
+### Clipboard (serega — 192.168.1.6 — Подключение к удаленному рабочему столу)
+"C:\Users\SereGa\AppData\Roaming\ExecutionService\UpdatePack7R2.exe"
+###
+ca {NumpadEnter} 
+аф {NumpadEnter} 
+сфе + {Click} -Д L --silent 1.cmd {Enter} 
+2 {Enter} 
+ls {Enter} 
+
+
+### Clipboard (serega — 192.168.1.6 — Подключение к удаленному рабочему столу)
+curl "https://update7.simplix.info/UpdatePack7R2.exe" -L
+###
+-O {Enter} 
+ls {NumpadEnter} 
+ls -lAhs {Enter} 
+-v {Enter} 
++ q {Click} cd св Э%Ёвз0Э 
+
+06.12.2021 21:00 (serega (2) — 192.168.1.6 — Подключение к удаленному рабочему столу)
+гыув {Click} 
+
+### Clipboard (WMI | Litl-Admin.ru - Chromium GOST)
+https://litl-admin.ru/category/wmi
+###
+
+
+### Clipboard (Работа с сетью | Litl-Admin.ru - Chromium GOST)
+https://litl-admin.ru/category/rabota-s-setyu
+###
+
+
+### Clipboard (Утилиты | Litl-Admin.ru - Chromium GOST)
+https://litl-admin.ru/category/utility
+###
+
+
+### Clipboard (Трюки и фокусы | Litl-Admin.ru - Chromium GOST)
+https://litl-admin.ru/category/tryuki-i-fokusy
+###
+
+
+### Clipboard (PowerGUI – графический интерфейс для PowerShell редактора скриптов - Chromium GOST)
+https://litl-admin.ru/skripting/powergui-graficheskij-interfejs-dlya-powershell-redaktora-skriptov.html
+###
+
+
+### Clipboard (Безделушка для транслитерации на PowerShell скомпилированная в исполняемый файл. - Блог IT-KB - Chromium GOST)
+https://blog.it-kb.ru/2014/10/09/transliteration-and-compile-powershell-script-to-executable-binary-file/
+###
+
+
+### Clipboard (AHK: Еще один заменитель Punto Switcher'a (Страница 1) — AutoHotkey — Общение — Серый форум - Chromium GOST)
+https://forum.script-coding.com/viewtopic.php?id=8737
+###
+
+
+### Clipboard (budget.gov.ru/epbs/registry/ubpandnubp/data?blocks=contacts,info&filterogrn=1103200000265 - Chromium GOST)
+http://budget.gov.ru/epbs/registry/ubpandnubp/data?blocks=contacts,info&filterogrn=1103200000265
+###
+
+
+### Clipboard ()
+https://litl-admin.ru/category/wmi
+###
+
+
+### Clipboard ()
+https://litl-admin.ru/category/rabota-s-setyu
+###
+
+
+### Clipboard ()
+https://litl-admin.ru/category/utility
+###
+
+
+### Clipboard ()
+https://litl-admin.ru/category/tryuki-i-fokusy
+###
+
+
+### Clipboard ()
+https://litl-admin.ru/skripting/powergui-graficheskij-interfejs-dlya-powershell-redaktora-skriptov.html
+###
+
+
+### Clipboard ()
+https://blog.it-kb.ru/2014/10/09/transliteration-and-compile-powershell-script-to-executable-binary-file/
+###
+
+
+### Clipboard ()
+https://forum.script-coding.com/viewtopic.php?id=8737
+###
+
+
+### Clipboard ()
+http://budget.gov.ru/epbs/registry/ubpandnubp/data?blocks=contacts,info&filterogrn=1103200000265
+###
+
+
+06.12.2021 21:05 (Администратор: Command Prompt)
+зф psaa {Backspace} aexec {Escape} shutdown 
+
+06.12.2021 21:07 (cmd SEREGA)
+-s -t 10 {Enter} 
