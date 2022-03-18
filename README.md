@@ -3,7 +3,7 @@ deb https://dl.astralinux.ru/astra/stable/1.6_x86-64/repository smolensk main co
  
 ## Актуальное оперативное обновление основного репозитория
 deb https://dl.astralinux.ru/astra/stable/1.6_x86-64/repository-update/ smolensk main contrib non-free
-
+```markdown
 # 
 sudo cp astra/keys/astra_echelon_pub_key.gpg /etc/digsig/keys/
 ##
@@ -20,7 +20,7 @@ dpkg -i ./*.deb
 service clickhouse-server start
 echo "pass"; echo -n "pass" | sha256sum | tr -d '-'
 sudo nano /etc/clickhouse-server/users.d/komrad.xml
-`
+
 <yandex>
 	<users>
 		<komrad>
@@ -29,9 +29,9 @@ sudo nano /etc/clickhouse-server/users.d/komrad.xml
 		</komrad>
 	</users>
 </yandex>
-`
+
 sudo nano /etc/clickhouse-server/users.xml
-`
+
 <!-- Users and ACL. -->
 <users>
 	<komrad>
@@ -40,7 +40,6 @@ sudo nano /etc/clickhouse-server/users.xml
 	</komrad>
 <!-- If user name was not specified, 'default' user is used. -->
 <default>
-`
-sudo systemctl restart clickhouse-server.service
 
- 
+sudo systemctl restart clickhouse-server.service
+```
