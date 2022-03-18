@@ -42,3 +42,4 @@ sudo nano /etc/clickhouse-server/users.xml
 <default>
 `
 sudo systemctl restart clickhouse-server.service
+
