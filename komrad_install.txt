@@ -1,0 +1,239 @@
+1) Установите и настройте PostgreSQL 9.6, выполнив команду в терминале:
+sudo apt install postgresql ca-certificates -y
+2) Перейдите в папку с дистрибутивом /astra/db/clickhouse/ и в терминале введите:
+sudo dpkg -i ./*.deb
+Укажите пароль для пользователя «default».
+3) Запустите ClickHouse командой в терминале:
+sudo service clickhouse-server start
+4) Создайте пароль для ClickHouse командой в терминале, указав вместо pass ваш пароль:
+Внимание! Команда пишется в одну строчку:
+echo "pass"; echo -n "pass" | sha256sum | tr -d '-'
+В первой строке результата – пароль (pass). Вторая строка – соответствующий ему хэш
+SHA256 (pass_SHA256).
+5) Создайте и откройте на редактирование файл:
+sudo nano /etc/clickhouse-server/users.d/komrad.xml
+Заполните содержимое файла следующим фрагментом:
+<yandex>
+  <users>
+    <komrad>
+      <password remove='1' />
+      <password_sha256_hex>pass_SHA256</password_sha256_hex>
+     </komrad>36
+   </users>
+ </yandex>
+Где вместо pass_SHA256 вставьте сгенерированный хэш, соответствующий вашему паролю.
+6) Откройте файл, выполнив:
+sudo nano /etc/clickhouse-server/users.xml
+Добавьте пользователя komrad в группу пользователей, для чего приведите фрагмент файла
+к виду:
+<!-- Users and ACL. -->
+<users>
+<komrad>
+<access_management>1</access_management>
+<password></password>
+</komrad>
+<!-- If user name was not specified, 'default' user is used. -->
+<default>
+7) Перезапустите сервер ClickHouse, выполнив:
+sudo systemctl restart clickhouse-server.service
+3.2.3.2. Шаг 2. Задание прав пользователя на создание баз данных и создание базы
+данных
+1) Чтобы создать нового пользователя, откройте аккаунт стандартного пользователя:
+sudo su - postgres
+2) Наделите пользователя правами на создание новых баз данных, где вместо pass –
+установите пароль для пользователя postgres:
+psql -c "ALTER USER postgres WITH CREATEDB LOGIN PASSWORD 'pass';"
+3) Установите расширение, выполнив:
+psql -c "CREATE EXTENSION pg_trgm;"
+4) Создайте базы данных, выполнив:
+createdb -O postgres komrad-preferences
+createdb -O postgres pauth-preferences37
+createdb -O postgres scanner
+exit
+5) Запустите клиент ClickHouse, используя данные пользователя komrad, где вместо pass –
+укажите пароль, заданный в шаге 1 при установке ClickHouse:
+clickhouse-client --user=komrad --password=pass
+6) Создайте базу данных, выполнив:
+CREATE DATABASE komrad_events
+exit
+3.2.3.3. Шаг 3. Установка модуль сканирования сети Nmap
+Перейдите в папку с утилитами /astra/tools и через терминал выполните команду:
+sudo dpkg -i ./*.deb
+3.2.3.4. Шаг 4. Установка ПК «КОМРАД»
+Перейдите в папку с дистрибутивом /astra/deb и через терминал выполните команду:
+sudo dpkg -i ./*.deb
+3.2.3.5. Шаг 5. Редактирование yaml-файлов
+1) Откройте файл komrad-processor.yaml, выполнив через команду в терминале:
+sudo nano /etc/echelon/komrad/komrad-processor/komrad-processor.yaml
+Приведите фрагмент файла к данному виду:
+# Настройки подключения к бд хранящей конфигурацию виджетов
+widgetsdb:
+TLSCertPath: /var/lib/echelon/komrad/certs/client.pem
+TLSKeyPath: /var/lib/echelon/komrad/certs/client-key.pem
+TLSRootCAPath: /var/lib/echelon/komrad/certs/ca.pem
+db: komrad-preferences
+host: localhost
+password: pass # укажите пароль для пользователя postgres (PostgreSQL)
+port: 5432
+tlsmode: verify-full
+user: postgres38
+# Настройки хранилища событий информационной безопасности
+storage:
+# Тип хранилища, в данной версии поддерживается только:
+# - timescale - PostgreSQL 12+ с плагином TimescaleDB 2.2.1+
+# - clickhouse - ClickHouse v21.7.8.58-stable
+# Для ОС "Основа" поддерживается PostgreSQL 11 с TimescaleDB 2.2.1
+kind: clickhouse
+clickhouse:
+# Название БД
+name: komrad_events
+user: komrad
+password: pass # укажите пароль для пользователя komrad (ClickHouse)
+# Адрес хоста с ClickHouse-server
+host: localhost
+# Порт ClickHouse-server
+port: 9000
+# Режим работы - с TLS или без
+sslmode: disable
+2) Откройте файл komrad-server.yaml, выполнив:
+sudo nano /etc/echelon/komrad/komrad-server/komrad-server.yaml
+Отредактируйте:
+database:
+pg:
+db: komrad-preferences
+host: localhost
+password: pass # укажите пароль для пользователя postgres (PostgreSQL)
+port: 5432
+tlsmode: verify-full
+user: postgres
+3) Откройте файл correlation-dispatcher.yaml, выполнив:
+sudo nano /etc/echelon/komrad/correlation-dispatcher/correlation-dispatcher.yaml
+Отредактируйте:
+# Настройка подключения к БД PostgreSQL в формате URL.
+DB: postgres://postgres:pass@localhost:5432/komrad-preferences?sslmode...39
+CorrelatorController:
+# Настройка подключения к БД PostgreSQL в формате URL для корреляторов.
+CorrelatorDB:postgres://postgres:pass@localhost:5432/komrad-preferences?sslmode...
+Где в pass – укажите пароль пользователя postgres (PostgreSQL).
+4) Откройте файл incident-manager.yaml, выполнив:
+sudo nano /etc/echelon/komrad/incident-manager/incident-manager.yaml
+Отредактируйте:
+# Настройка подключения к БД PostgreSQL в формате URL.
+DB: postgres://postgres:pass@localhost:5432/komrad-preferences?sslmode...
+Где в pass – укажите пароль пользователя postgres (PostgreSQL).
+5) Откройте файл pauth-server.yaml выполнив:
+sudo nano /etc/echelon/komrad/pauth-server/pauth-server.yaml
+Отредактируйте:
+database: postgres://postgres:pass@localhost:5432/pauth-preferences?sslmode...
+Где в pass – укажите пароль пользователя postgres (PostgreSQL).
+6) Откройте komrad-scanner-config.json, выполнив:
+sudo nano /etc/echelon/komrad/komrad-scanner/komrad-scanner-config.json
+Отредактируйте:
+"Main": {
+"Driver": "postgres",
+"Host": "localhost",
+"Port": 5432,
+"DBName": "scanner",
+"User": "postgres",
+"Password": "pass",
+"SSLMode": "disable"
+}
+Где в pass – укажите пароль пользователя postgres (PostgreSQL).
+7) Откройте postgresql.conf, выполнив:
+sudo nano /etc/postgresql/9.6/main/postgresql.conf40
+Раскомментируйте и добавьте пути до сертификатов:
+ssl = on
+ssl_ca_file = '/var/lib/echelon/komrad/certs/ca.pem'
+ssl_key_file = '/var/lib/echelon/komrad/certs/server-key.pem'
+ssl_cert_file = '/var/lib/echelon/komrad/certs/server.pem'
+8) Перезагрузите сервисы, выполнив команду в одну строчку:
+sudo systemctl restart postgresql komrad-server komrad-processor
+komrad-scanner pauth-server correlation-dispatcher incident-manager
+3.2.3.6. Шаг 6. Создание ролей администратора и пользователя с правами
+администратора
+Создайте роль администратора и пользователя с правами администратора через команды в
+терминале.
+Внимание! Каждая отдельная команда пишется одну строчку:
+sudo pauthctl role add admin --migrate --conn
+"postgresql://postgres:pass@localhost:5432/pauth-preferences"
+О успешном добавлении роли admin в строке сервиса будет строка:
+INFO roles added {"role_names": ["admin"], "status": "success"}
+sudo pauthctl role add user --conn
+"postgresql://postgres:pass@localhost:5432/pauth-preferences"
+О успешном добавлении роли user в строке сервиса будет строка:
+INFO roles added {"role_names": ["user"], "status": "success"}
+sudo pauthctl user add --email name@domain.com --login admin --roles admin --password
+admin --conn "postgresql://postgres:pass@localhost:5432/pauth-preferences"
+Где:
+1) pass – укажите пароль пользователя postgres (PostgreSQL);
+2) --e-mail name@domain.com – укажите свой e-mail адрес администратора;
+3) --login admin – укажите свой логин администратора;
+4) --password admin – укажите свой пароль администратора.
+3.2.3.7. Шаг 7. Перенос лицензии
+1) Удалите демо-лицензию из папки /etc/echelon/komrad/license командой в терминале:
+sudo rm /etc/echelon/komrad/license/license.lic
+2) Скопируйте в папку /etc/echelon/komrad/license файл лицензии с расширением (.lic).41
+3) Перезапустите сервисы komrad-server, komrad-processor, pauth-server командой в терминале:
+sudo systemctl restart komrad-server komrad-processor pauth-server
+3.2.3.8. Шаг 8. Создание сертификатов
+Внимание! Дальнейшие действия желательно выполнять на отдельной ЭВМ, где в
+дальнейшем будут храниться корневые сертификаты, необходимые для корректной работы
+компонентов ПК «КОМРАД».
+Создание сертификатов:
+1) создайте на жестком диске папку /tls;
+Совет! Команда для создания папки:
+mkdir tls
+2) перейдите в папку /tls и выполните команду в терминале для создания корневого сертификата:
+cd tls
+echelontls ca --organization “Echelon”
+Где вместо Echelon укажите название своей организации.
+В папке /tls сгенерируются два файла ca.pem и ca-key.pem.
+3) создайте серверный сертификат командой в терминале:
+echelontls cert --organization “Echelon” localhost 127.0.0.1 $(hostname -I) $(hostname)
+Где вместо Echelon укажите название своей организации.
+В папке /tls сгенерируются два файла server.pem и server-key.pem
+4) создайте клиентский сертификат командой в терминале:
+echelontls cert --client
+В папке /tls сгенерируются два файла client.pem и client-key.pem
+5) создайте сертификат для браузера командой в терминале:
+echelontls browser
+Внимание! При генерации сертификата для браузера, утилита komradtls попросит задать
+пароль. Этот пароль потребуется при добавлении сертификата в браузер, поэтому запомните этот пароль.
+В папке /tls сгенерируется файл client-browser.p12.
+3.2.3.9. Шаг 9. Удаление сертификатов по умолчанию
+Удалите все сертификаты из папки с сертификатами по умолчанию командой в терминале:
+sudo rm /var/lib/echelon/komrad/certs/CAs/*
+sudo rm /var/lib/echelon/komrad/certs/*42
+3.2.3.10. Шаг 10. Копирование сертификатов
+Скопируйте сертификаты в следующие папки:
+1) файлы ca.pem, server.pem, server-key.pem, client.pem, client-key.pem в
+/var/lib/echelon/komrad/komrad-server/certs/ командой терминале:
+sudo cp ca.pem server.pem server-key.pem client.pem client-key.pem
+/var/lib/echelon/komrad/certs/
+Внимание! Команда выполняется в одну строчку.
+2) файл ca.pem в /var/lib/echelon/komrad/certs/CAs/ командой:
+sudo cp ca.pem /var/lib/echelon/komrad/certs/CAs/
+3.2.3.11. Шаг 11. Изменение владельца файлов на komrad:komrad и предоставление
+прав сертификатам
+Введите команды в терминале:
+sudo chown komrad:komrad /etc/echelon/komrad/license/имя_лицензии.lic
+sudo chown -R komrad:komrad /var/lib/echelon/komrad/certs
+sudo chmod -R 755 /var/lib/echelon/komrad/certs
+sudo chmod 0640 /var/lib/echelon/komrad/certs/server-key.pem
+sudo chown root:komrad /var/lib/echelon/komrad/certs/server-key.pem
+sudo usermod -a -G komrad postgres
+sudo chmod 755 client-browser.p12
+Где в имя_лицензии – укажите наименование файла лицензии.
+3.2.3.12. Шаг 12. Перезапуск сервисов
+Перезагрузите систему.
+3.2.3.13. Шаг 13. Установка корневого и браузерного сертификатов в браузере
+Выполните следующие действия:
+1) откройте Firefox → Настройки → Приватность и защита → Сертификаты →
+Просмотр сертификатов;
+2) перейдите во вкладку Ваши сертификаты меню Управления сертификатами;
+3) импортируйте сертификаты ca.pem в «Доверенные корневые центры сертификации» и
+client-browser.p12 в «Личные», при этом потребуется указать пароль установленный, при
+генерации браузерного сертификата в Шаге 8;
+4) перезагрузите браузер.
+3.2.3.14. Шаг 14. Конец
+ПК «КОМРАД» установлен и доступен по адресу https://localhost.
