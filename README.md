@@ -43,3 +43,9 @@ sudo nano /etc/clickhouse-server/users.xml
 
 sudo systemctl restart clickhouse-server.service
 ```
+<details>
+  <summary>Screen recording</summary>
+
+  ![Powerlevel10k Configuration Wizard](
+    https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/configuration-wizard.gif)
+</details>
